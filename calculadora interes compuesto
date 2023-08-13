@@ -1,0 +1,25 @@
+#current principal = 500
+#anual addition = 1000
+#years to grow = 30
+#interest rate  = 10
+#result = 189669,13
+
+print('current principal')
+current = float(input())
+
+print('anual addition')
+anualAddition = float(input())
+
+print('years to grow')
+years = int(input())
+
+print('interest rate')
+interestRate = float(input())
+
+
+total = current
+
+for i in range(years):
+  total = total + 1000
+  total = total + (interestRate * total / 100) 
+print ('RESULTADO: $' + str(total))
