@@ -1,0 +1,21 @@
+
+pages = [
+    'page INTRO) Al principio pense que era algun camion a gran velocidad, pero el temblor se sostubo y pense,\n -ES UN TEMBLOR!- \n que vas a hacer? \n 1)esperar a que pase? \n 2)salir corriendo afuera \n 3) saltar por la ventana',
+    'page 1) me quede inmovil, esperando que pase \n de repente, se hizo la oscuridad y empece a ver capibaras, ya estaba en su cielo',
+    'page 2) sali corriendo por las escaleras \n todo estaba oscuro, muy opscuro y de repente tenia un frappe en la mano y un capibara me contaba su vida',
+    'page 3) le di varias patadas a las puertas y no caia, habia mucha gente haciendo lo mismo \n que haces ahora? \n 4)saltas por la ventana? \n 5)buscas una fire axe \n 6) te escondes bajo una viga',
+    'page 4) salte por la ventana \n te salvaste, notaste que habia muchas gente en la calle \n como celebras q viviste para contarlo? \n 7) chelas valdebebas 9 bolo relajao \n 8) estudias', 
+    'page 5) agarre la fire axe \n no valio de nada, no habia spawn pa lvl',
+    'page 6) hice lo que me enseñaron en el coleyio  \n y como siempre, la vida me mando al lobby',
+    'page 7) ganaste either way',
+    'page 8) like i said before, you won either way :),'
+
+]
+
+def showPage(pageNumber):
+    text = pages[pageNumber]
+    print(text)
+    response = input()
+    showPage(int(response))
+
+showPage(0)
