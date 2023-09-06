@@ -1,0 +1,53 @@
+#python buscador
+from flask import Flask, render_template, request
+import pymysql
+
+app = Flask(__name__)
+
+#conexion a la BBDD
+
+connection = pymysql.connect(
+    host = 'localhost',
+    user = 'root',
+    password = '',
+    db = 'PROJECT_1'
+)
+
+# funcion para consultar un producto por nombre
+
+def consultar_producto(nombre):
+    try:
+        with connection.cursor() as cursor:
+            #consulta SQL para obtener informacion del producto
+            sql = f" SELECT KCAL, Proteinas, Grasas, Carbohidratos FROM Productos WHERE Nombre = %s"
+            cursor.execute(sql, (nombre,))
+            resultado = cursor.fetchone()
+            return resultado
+    finally:
+        connection.close()
+
+nombre = input('Ingrese nombre del producto:')
+resultado = consultar_producto(nombre)
+if resultado:
+    print(f"Informacion del producto '{nombre}' : ")
+    print(f"KCAL: {resultado[0]}")
+    print(f"Proteinas: {resultado[1]}")
+    print(f"Grasas: {resultado[2]}")
+    print(f"Carbohidratos: {resultado[3]}")
+else:
+    print(f"El producto '{nombre}' no esta en nuestra base de datos")
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/consultar', methods=['POST'])
+def consultar():
+    nombre = request.form['nombre']
+    resultado = consultar_producto(nombre)
+    if resultado:
+        return render_template('resultado.html', nombre=nombre, resultado=resultado)
+    else:
+        return render_template('no_encontrado.html', nombre=nombre)
+if __name__ == '__main__':
+    app.run(port=5000)
