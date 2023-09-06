@@ -1,0 +1,55 @@
+#index.html
+</head>
+<body>
+    <h1>Consulta de Productos</h1>
+    <form action="/consultar" method="post">
+        <label for="nombre">Nombre del producto:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <button type="submit">Consultar</button>
+    </form>
+</body>
+</html>
+
+#resultado.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultado de la Consulta</title>
+</head>
+<body>
+    <h1>Resultado de la Consulta</h1>
+    <p>Información del producto '{{ nombre }}':</p>
+    <p>KCAL: {{ resultado[0] }}</p>
+    <p>Proteinas: {{ resultado[1] }}</p>
+    <p>Grasas: {{ resultado[2] }}</p>
+    <p>Carbohidratos: {{ resultado[3] }}</p>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consulta de Productos</title>
+</head>
+<body>
+    <h1>Consulta de Productos</h1>
+    <form action="/consultar" method="post">
+        <label for="nombre">Nombre del producto:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <button type="submit">Consultar</button>
+    </form>
+</body>
+</html>
+
+#no_encontrado.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Producto no Encontrado</title>
+</head>
+<body>
+    <h1>Producto no Encontrado</h1>
+    <p>El producto '{{ nombre }}' no está en nuestra base de datos.</p>
+</body>
+</html>
